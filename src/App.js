@@ -1,19 +1,30 @@
-import styled from "styled-components"
-import HomePage from "./pages/HomePage/HomePage"
-import SeatsPage from "./pages/SeatsPage/SeatsPage"
+import styled from "styled-components";
+import HomePage from "./pages/HomePage/HomePage";
+// import SeatsPage from "./pages/SeatsPage/SeatsPage";
 import SessionsPage from "./pages/SessionsPage/SessionsPage"
-import SuccessPage from "./pages/SuccessPage/SuccessPage"
+// import SuccessPage from "./pages/SuccessPage/SuccessPage"
+import { useState } from 'react';
+// import { BrowserRouter as Router, Route } from "react-router-dom";
 
 export default function App() {
-    return (
-        <>
-           <NavContainer>CINEFLEX</NavContainer>
+    const [id, setId] = useState();
 
-            {/* <HomePage /> */}
-            {/* <SeatsPage /> */}
-            <SessionsPage />
-            {/* <SuccessPage /> */}
+    return (
+
+        <>
+            <NavContainer>CINEFLEX</NavContainer>
+            {/* <HomePage   id={id} setId={setId} /> */}
+            <SessionsPage  id={id} />
         </>
+
+        // <Router>
+        //     <NavContainer>CINEFLEX</NavContainer>
+            
+        //     <HomePage   id={id} setId={setId} />
+
+        //     <Route exact path="/" component={HomePage} />
+        //     <Route path={`/${id}`} component={SeatsPage} />
+        // </Router>
     )
 }
 
