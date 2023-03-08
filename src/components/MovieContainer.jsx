@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import axios from "axios";
-// import SeatsPage from "./pages/SeatsPage/SeatsPage";
 import { useEffect, useState} from "react";
+import { useNavigate } from "react-router-dom";
 
 
 export default function Movies(props){
@@ -9,6 +9,7 @@ export default function Movies(props){
     const api = axios.create();
     const { setId } = props;
     const [movies, setMovies] = useState([]);
+    const Navigator = useNavigate();
 
     useEffect(() => {
         api
@@ -21,7 +22,12 @@ export default function Movies(props){
 
     function getMovie(id){
         setId(id);
-        console.log(id);
+        // console.log(id);
+        Navigator(`/sessoes/${id}`);
+    }
+
+    if(movies.length === 0){
+        return <h3>Loading...</h3>
     }
 
     return(

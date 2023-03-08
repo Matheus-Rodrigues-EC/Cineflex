@@ -1,30 +1,29 @@
 import styled from "styled-components";
 import HomePage from "./pages/HomePage/HomePage";
-// import SeatsPage from "./pages/SeatsPage/SeatsPage";
+import SeatsPage from "./pages/SeatsPage/SeatsPage";
 import SessionsPage from "./pages/SessionsPage/SessionsPage"
-// import SuccessPage from "./pages/SuccessPage/SuccessPage"
+import SuccessPage from "./pages/SuccessPage/SuccessPage"
 import { useState } from 'react';
-// import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 export default function App() {
-    const [id, setId] = useState();
+    const [id, setId] = useState(1);
+    const [session, setSession] = useState();
 
     return (
 
-        <>
+        <BrowserRouter>
             <NavContainer>CINEFLEX</NavContainer>
-            {/* <HomePage   id={id} setId={setId} /> */}
-            <SessionsPage  id={id} />
-        </>
 
-        // <Router>
-        //     <NavContainer>CINEFLEX</NavContainer>
-            
-        //     <HomePage   id={id} setId={setId} />
+            <Routes>
+                <Route path="/" element={<HomePage   id={id} setId={setId} />} />
+                <Route path={`/sessoes/${id}`} element={<SessionsPage id={id} session={session} setSession={setSession}  />} />
+            </Routes>
 
-        //     <Route exact path="/" component={HomePage} />
-        //     <Route path={`/${id}`} component={SeatsPage} />
-        // </Router>
+
+        </BrowserRouter>
+
+        
     )
 }
 
