@@ -9,6 +9,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 export default function App() {
     const [id, setId] = useState(1);
     const [session, setSession] = useState();
+    const [dataSession, setDataSession] = useState();
+    const [seats, setSeats] = useState();
 
     return (
 
@@ -17,7 +19,8 @@ export default function App() {
 
             <Routes>
                 <Route path="/" element={<HomePage   id={id} setId={setId} />} />
-                <Route path={`/sessoes/${id}`} element={<SessionsPage id={id} session={session} setSession={setSession}  />} />
+                <Route path={`/sessoes/${id}`} element={<SessionsPage id={id} session={session} setSession={setSession} setDataSession={setDataSession} seats={seats} setSeats={setSeats} />} />
+                <Route path={`/assentos/${seats}`} element={<SeatsPage session={session} seats={seats} setSeats={setSeats} dataSession={dataSession} />} />
             </Routes>
 
 

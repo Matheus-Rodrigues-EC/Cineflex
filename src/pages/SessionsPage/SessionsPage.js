@@ -3,12 +3,12 @@ import Session from "../../components/Session";
 
 export default function SessionsPage(props) {
 
-    const { id, session, setSession } = props;
+    const { id, session, setSession, setSeats, setDataSession } = props;
 
     return (
         <PageContainer>
             Selecione o horário
-            <Session id={id} session={session} setSession={setSession} />
+            <Session id={id} session={session} setSession={setSession} setDataSession={setDataSession} setSeats={setSeats} />
 
         </PageContainer>
     )
