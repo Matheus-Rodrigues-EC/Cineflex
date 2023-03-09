@@ -11,6 +11,9 @@ export default function App() {
     const [session, setSession] = useState();
     const [dataSession, setDataSession] = useState();
     const [seats, setSeats] = useState();
+    const [selects, setSelects] = useState([]);
+    const [reservation, setReservation] = useState()
+    
 
     return (
 
@@ -18,9 +21,26 @@ export default function App() {
             <NavContainer>CINEFLEX</NavContainer>
 
             <Routes>
-                <Route path="/" element={<HomePage   id={id} setId={setId} />} />
-                <Route path={`/sessoes/${id}`} element={<SessionsPage id={id} session={session} setSession={setSession} setDataSession={setDataSession} seats={seats} setSeats={setSeats} />} />
-                <Route path={`/assentos/${seats}`} element={<SeatsPage session={session} seats={seats} setSeats={setSeats} dataSession={dataSession} />} />
+                <Route path="/" element={<HomePage id={id} setId={setId} />} />
+                <Route path={`/sessoes/${id}`} element={<SessionsPage 
+                                                                    id={id} 
+                                                                    session={session} 
+                                                                    setSession={setSession} 
+                                                                    setDataSession={setDataSession} 
+                                                                    seats={seats} 
+                                                                    setSeats={setSeats} 
+                                                                    />} />
+                <Route path={`/assentos/${seats}`} element={<SeatsPage 
+                                                                session={session} 
+                                                                seats={seats} 
+                                                                setSeats={setSeats} 
+                                                                dataSession={dataSession} 
+                                                                setReservation={setReservation}
+                                                                selects={selects}
+                                                                setSelects={setSelects}
+                                                                />} />
+
+                <Route path="/sucess" element={<SuccessPage dataSession={dataSession}  reservation={reservation} selects={selects} setSelects={setSelects} />} />
             </Routes>
 
 

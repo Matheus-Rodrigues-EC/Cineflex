@@ -1,13 +1,18 @@
 import styled from "styled-components"
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Seats(props){
 
     const api = axios.create();
-    const { seats, session, dataSession } = props;
+    const Navigator = useNavigate();
+    const { seats, session, dataSession, setReservation, selects, setSelects } = props;
     const [assentos, setAssentos] = useState();
-    const [reservation, setReservation] = useState([]);
+    const [reservations, setReservations] = useState([]);
+    const [Name, setName] = useState("");
+    const [CPF, setCPF] = useState("");
+
 
     useEffect(() => {
         api.get(`https://mock-api.driven.com.br/api/v8/cineflex/showtimes/${seats}/seats`)
@@ -19,16 +24,49 @@ export default function Seats(props){
 
     // const notAvailable = assentos.
         
-    function addReservation(locate){
-        const newReserv = [...reservation];
-        setReservation([...newReserv, locate]);
+    function addReservation(id, num){
+        const newReserv = [...reservations];
+        setReservations([...newReserv, id]);
+        const newSelect = [...selects];
+        setSelects([...newSelect, num])
         // console.log(newReserv);
     }
     
-    function delReservation(locate){
-        const index = reservation.indexOf(locate);
-        const newReserv = reservation.splice(index, 1);
+    function delReservation(id, num){
+        const indexID = reservations.indexOf(id);
+        reservations.splice(indexID, 1);
+        const indexName = selects.indexOf(num);
+        selects.splice(indexName, 1);
         // console.log(newReserv);
+    }
+
+    function doReservation(idList, name, cpf){
+        if(reservations.length === 0){
+            alert("Você deve selecionar pelo menos um assento.");
+            return;
+        }
+        if(Name === ""){
+            alert("Você deve digitar seu nome.");
+            return;
+        }
+        if(CPF === ""){
+            alert("Você deve digitar seu CPF.");
+            return;
+        }
+        alert(
+            `Nome: ${Name}\n
+            CPF: ${CPF}\n
+            ${selects.map((reserva) => 'Assento ' + reserva + "\n")}`
+            );
+        
+        const Reserv = {
+            ids: reservations,
+            name: Name,
+            cpf: CPF
+        }
+        // console.log(Reserv);
+        setReservation(Reserv);
+        Navigator(`/sucess`)
     }
 
     while(true){
@@ -47,15 +85,15 @@ export default function Seats(props){
                     <>
                     {
                     (seat.isAvailable === false) ? (
-                        <NotAvailable key={seat.name} >
+                        <NotAvailable onClick={() => alert("Esse assento não está disponível")} key={seat.name} >
                             {seat.name}
                         </NotAvailable>
-                    ) : (reservation.includes(seat.name)) ? (
-                        <Selected onClick={() => {delReservation(seat.name);}} key={seat.id} >
+                    ) : (reservations.includes(seat.id)) ? (
+                        <Selected onClick={() => {delReservation(seat.id, seat.name);}} key={seat.id} >
                             {seat.name}
                         </Selected>
                     ) : (
-                        <SeatItem onClick={() => {addReservation(seat.name);}} key={seat.id} >
+                        <SeatItem onClick={() => {addReservation(seat.id, seat.name);}} key={seat.id} >
                             {seat.name}
                         </SeatItem>
                     )
@@ -82,12 +120,14 @@ export default function Seats(props){
 
             <FormContainer>
                 Nome do Comprador:
-                <input placeholder="Digite seu nome..." />
+                <input placeholder="Digite seu nome..." value={Name} onChange={(e) => setName(e.target.value)} />
 
                 CPF do Comprador:
-                <input placeholder="Digite seu CPF..." />
+                <input placeholder="Digite seu CPF..."  value={CPF} onChange={(e) => setCPF(e.target.value)} />
 
-                <button>Reservar Assento(s)</button>
+                <button onClick={() => doReservation()} >
+                    Reservar Assento(s)
+                </button>
             </FormContainer>
 
             <FooterContainer>
@@ -174,7 +214,6 @@ const NotAvailable = styled.div`
     margin: 5px 3px;
     padding-top: 1px;
 `
-
 const CaptionItem = styled.div`
     display: flex;
     flex-direction: column;

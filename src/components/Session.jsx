@@ -26,7 +26,7 @@ export default function Session(props){
 
     function setDatasSession(seats, day, hour){
         setSeats(seats);
-        setDataSession({Day: day, Hour: hour});
+        setDataSession({Name: session.title, Day: day, Hour: hour});
         Navigator(`/assentos/${seats}`);
     }
 
@@ -44,9 +44,7 @@ export default function Session(props){
                             </Button>
                         ))}
                         </Buttons>
-                    {/* 0: {id: 24102021, weekday: 'Domingo', date: '24/10/2021', showtimes: Array(2)} */}
                     </Infos>
-
                         <FooterContainer>
                             <div>
                                 <img src={session.posterURL} alt={session.overview} />
