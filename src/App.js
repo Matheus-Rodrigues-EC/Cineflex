@@ -17,10 +17,10 @@ export default function App() {
     const [reservation, setReservation] = useState()
     
     function CleanId(){
-        if(session === undefined){
+        // if(session === undefined){
             const zerar = 0;
             setId(zerar);
-        }
+        // }
     }
 
     return (
