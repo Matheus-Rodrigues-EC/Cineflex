@@ -20,7 +20,7 @@ export default function Seats(props){
             .catch((err) => {
                 console.error("ops! ocorreu um erro" + err);
             });
-        }, []);
+        });
 
     // const notAvailable = assentos.
         
@@ -122,7 +122,7 @@ export default function Seats(props){
                 </button>
             </FormContainer>
 
-            <FooterContainer>
+            <FooterContainer data-test="footer" >
                 <div>
                     <img src={session.posterURL} alt="poster" />
                 </div>
