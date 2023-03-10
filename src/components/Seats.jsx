@@ -7,7 +7,7 @@ export default function Seats(props){
 
     const api = axios.create();
     const Navigator = useNavigate();
-    const { seats, session, dataSession, setReservation, selects, setSelects } = props;
+    const { seats, session, dataSession, setReservation, selects, setSelects, setId } = props;
     const [assentos, setAssentos] = useState();
     const [reservations, setReservations] = useState([]);
     const [Name, setName] = useState("");
@@ -60,6 +60,7 @@ export default function Seats(props){
             cpf: CPF
         }
         setReservation(Reserv);
+        setId(0);
 
         api.post(`https://mock-api.driven.com.br/api/v8/cineflex/seats/book-many`, Reserv);
 

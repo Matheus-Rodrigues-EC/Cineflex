@@ -3,7 +3,7 @@ import Seats from "../../components/Seats";
 
 export default function SeatsPage(props) {
 
-    const { seats, session, dataSession, setReservation, selects, setSelects } = props;
+    const { seats, session, dataSession, setReservation, selects, setSelects, setId } = props;
 
     return (
         <PageContainer>
@@ -14,6 +14,7 @@ export default function SeatsPage(props) {
                     setReservation={setReservation} 
                     selects={selects}
                     setSelects={setSelects}
+                    setId={setId}
                     />
         </PageContainer>
     )

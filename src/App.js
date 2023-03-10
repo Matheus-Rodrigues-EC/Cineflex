@@ -52,9 +52,14 @@ export default function App() {
                                                                 setReservation={setReservation}
                                                                 selects={selects}
                                                                 setSelects={setSelects}
+                                                                setId={setId}
                                                                 />} />
 
-                <Route path="/sucesso" element={<SuccessPage dataSession={dataSession}  reservation={reservation} selects={selects} setSelects={setSelects} />} />
+                <Route path="/sucesso" element={<SuccessPage    dataSession={dataSession} 
+                                                                reservation={reservation} 
+                                                                selects={selects} 
+                                                                setSelects={setSelects}
+                                                                />} />
             </Routes>
 
 
