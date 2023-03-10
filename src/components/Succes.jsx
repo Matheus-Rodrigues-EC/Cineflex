@@ -10,12 +10,12 @@ export default function Sucess(props){
             <TextContainer data-test="movie-info" >
                 <strong><p>Filme e sessão</p></strong>
                 <p>{dataSession.Name}</p>
-                <p>{dataSession.Day} - {dataSession.Hour}</p>
+                <p>{dataSession.Date} - {dataSession.Hour}</p>
             </TextContainer>
 
             <TextContainer data-test="seats-info" >
                 <strong><p>Ingressos</p></strong>
-                {selects.map((seat) => <p>Assento {seat}</p>)}
+                {selects.map((seat) => <p key={seat.id}>Assento {seat}</p>)}
             </TextContainer>
 
             <TextContainer data-test="client-info" >

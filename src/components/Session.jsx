@@ -24,9 +24,9 @@ export default function Session(props){
 
     const Days = session.days;
 
-    function setDatasSession(seats, day, hour){
+    function setDatasSession(seats, day, date, hour){
         setSeats(seats);
-        setDataSession({Name: session.title, Day: day, Hour: hour});
+        setDataSession({Name: session.title, Day: day, Date: date, Hour: hour});
         Navigator(`/assentos/${seats}`);
     }
 
@@ -34,28 +34,25 @@ export default function Session(props){
         <>
             <SessionContainer>
                 {Days.map((dia) => (
-                    <>
                     <Infos key={dia.id} data-test="movie-day">
-                        <h2 key={dia.weekday.id}>{dia.weekday} - {dia.date}</h2>
-                        <Buttons key={dia.weekday}>
+                        <h2 key={dia.weekday} >{dia.weekday} - {dia.date}</h2>
+                        <Buttons key={dia.releaseDate} >
                         {dia.showtimes.map((hora) => (
-                            <Button key={dia.showtimes.id} onClick={() => {setDatasSession(hora.id, dia.weekday, hora.name );}} data-test="showtime" >
+                            <Button key={hora.id} onClick={() => {setDatasSession(hora.id, dia.weekday, dia.date, hora.name );}} data-test="showtime" >
                                 {hora.name}
                             </Button>
                         ))}
                         </Buttons>
                     </Infos>
-                        <FooterContainer data-test="footer">
-                            <div>
-                                <img src={session.posterURL} alt={session.overview} />
-                            </div>
-                            <div>
-                                <p>{session.title}</p>
-                            </div>
-                        </FooterContainer>
-                    </>
                 ))}
-                    
+                <FooterContainer data-test="footer">
+                    <div>
+                        <img src={session.posterURL} alt={session.overview} />
+                    </div>
+                    <div>
+                        <p>{session.title}</p>
+                    </div>
+                </FooterContainer>
 
                 
             </SessionContainer> 

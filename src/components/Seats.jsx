@@ -53,19 +53,16 @@ export default function Seats(props){
             alert("Você deve digitar seu CPF.");
             return;
         }
-        // alert(
-        //     `Nome: ${Name}\n
-        //     CPF: ${CPF}\n
-        //     ${selects.map((reserva) => 'Assento ' + reserva + "\n")}`
-        //     );
         
         const Reserv = {
             ids: reservations,
             name: Name,
             cpf: CPF
         }
-        // console.log(Reserv);
         setReservation(Reserv);
+
+        api.post(`https://mock-api.driven.com.br/api/v8/cineflex/seats/book-many`, Reserv);
+
         Navigator(`/sucess`)
     }
 
@@ -82,10 +79,8 @@ export default function Seats(props){
         <>
             <SeatsContainer>
                 {Assentos.map((seat) => (
-                    <>
-                    {
                     (seat.isAvailable === false) ? (
-                        <NotAvailable onClick={() => alert("Esse assento não está disponível")} key={seat.name} data-test="seat" >
+                        <NotAvailable onClick={() => alert("Esse assento não está disponível")} key={seat.id} data-test="seat" >
                             {seat.name}
                         </NotAvailable>
                     ) : (reservations.includes(seat.id)) ? (
@@ -97,9 +92,6 @@ export default function Seats(props){
                             {seat.name}
                         </SeatItem>
                     )
-
-                    }
-                    </>
                 ))}
             </SeatsContainer>
 
