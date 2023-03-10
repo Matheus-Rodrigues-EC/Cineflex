@@ -63,7 +63,7 @@ export default function Seats(props){
 
         api.post(`https://mock-api.driven.com.br/api/v8/cineflex/seats/book-many`, Reserv);
 
-        Navigator(`/sucess`)
+        Navigator(`/sucesso`)
     }
 
     while(true){
