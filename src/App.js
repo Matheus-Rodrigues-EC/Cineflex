@@ -16,18 +16,29 @@ export default function App() {
     const [selects, setSelects] = useState([]);
     const [reservation, setReservation] = useState()
     
+    // function CleanId(){
+    //     // if(session === undefined){
+    //         const zerar = 0;
+    //         setId(zerar);
+    //     // }
+    // }
+
     function CleanId(){
-        // if(session === undefined){
+        if(dataSession === undefined){
             const zerar = 0;
             setId(zerar);
-        // }
+            // Navigator('/');
+        }else{
+            // Navigator(`/sessoes/${id}`);
+            setDataSession(undefined);
+        }
     }
 
     return (
 
         <BrowserRouter>
             <NavContainer>
-                <Link to={ `/`} onClick={() => {CleanId()}} data-test="go-home-header-btn" >
+                <Link to={ (dataSession === undefined) ? '/' : `/sessoes/${id}` } onClick={() => {CleanId()}} data-test="go-home-header-btn" >
                 {/* (id > 0) ? `/sessoes/${id}` : */}
                     <Arrow src={Back} alt="Back" id={id} seats={seats} />
                 </Link>
