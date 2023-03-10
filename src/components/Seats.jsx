@@ -53,11 +53,11 @@ export default function Seats(props){
             alert("Você deve digitar seu CPF.");
             return;
         }
-        alert(
-            `Nome: ${Name}\n
-            CPF: ${CPF}\n
-            ${selects.map((reserva) => 'Assento ' + reserva + "\n")}`
-            );
+        // alert(
+        //     `Nome: ${Name}\n
+        //     CPF: ${CPF}\n
+        //     ${selects.map((reserva) => 'Assento ' + reserva + "\n")}`
+        //     );
         
         const Reserv = {
             ids: reservations,
