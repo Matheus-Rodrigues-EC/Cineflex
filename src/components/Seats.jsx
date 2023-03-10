@@ -124,7 +124,7 @@ export default function Seats(props){
 
             <FooterContainer data-test="footer" >
                 <div>
-                    <img src={session.posterURL} alt="poster" />
+                    <img src={session.posterURL} alt={session.overview} />
                 </div>
                 <div>
                     <p>{session.title}</p>
@@ -255,11 +255,13 @@ const FooterContainer = styled.div`
         display: flex;
         flex-direction: column;
         align-items: flex-start;
+        margin: 0;
         p {
+            display: inline-flex;
             text-align: left;
-            &:nth-child(2) {
-                margin-top: 10px;
-            }
+            align-items: center;
+            justify-content: center;
+            
         }
     }
 `
