@@ -35,7 +35,7 @@ export default function Movies(props){
         <ListContainer>
             {
             movies.map((movie) => (
-                <MovieContainer key={movie.id} onClick={() => { getMovie(movie.id); }} >
+                <MovieContainer key={movie.id} onClick={() => { getMovie(movie.id); }} data-test="movie" >
                     <img src={movie.posterURL} alt={movie.overview} />
                 </MovieContainer>
             ))

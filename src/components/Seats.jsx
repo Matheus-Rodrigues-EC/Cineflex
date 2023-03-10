@@ -85,15 +85,15 @@ export default function Seats(props){
                     <>
                     {
                     (seat.isAvailable === false) ? (
-                        <NotAvailable onClick={() => alert("Esse assento não está disponível")} key={seat.name} >
+                        <NotAvailable onClick={() => alert("Esse assento não está disponível")} key={seat.name} data-test="seat" >
                             {seat.name}
                         </NotAvailable>
                     ) : (reservations.includes(seat.id)) ? (
-                        <Selected onClick={() => {delReservation(seat.id, seat.name);}} key={seat.id} >
+                        <Selected onClick={() => {delReservation(seat.id, seat.name);}} key={seat.id} data-test="seat" >
                             {seat.name}
                         </Selected>
                     ) : (
-                        <SeatItem onClick={() => {addReservation(seat.id, seat.name);}} key={seat.id} >
+                        <SeatItem onClick={() => {addReservation(seat.id, seat.name);}} key={seat.id} data-test="seat" >
                             {seat.name}
                         </SeatItem>
                     )
@@ -118,14 +118,14 @@ export default function Seats(props){
                 </CaptionItem>
             </CaptionContainer>
 
-            <FormContainer>
+            <FormContainer data-test="footer">
                 Nome do Comprador:
-                <input placeholder="Digite seu nome..." value={Name} onChange={(e) => setName(e.target.value)} />
+                <input placeholder="Digite seu nome..." value={Name} onChange={(e) => setName(e.target.value)} data-test="client-name" />
 
                 CPF do Comprador:
-                <input placeholder="Digite seu CPF..."  value={CPF} onChange={(e) => setCPF(e.target.value)} />
+                <input placeholder="Digite seu CPF..."  value={CPF} onChange={(e) => setCPF(e.target.value)} data-test="client-cpf" />
 
-                <button onClick={() => doReservation()} >
+                <button onClick={() => doReservation()} data-test="book-seat-btn" >
                     Reservar Assento(s)
                 </button>
             </FormContainer>

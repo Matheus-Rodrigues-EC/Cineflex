@@ -35,17 +35,17 @@ export default function Session(props){
             <SessionContainer>
                 {Days.map((dia) => (
                     <>
-                    <Infos key={dia.id}>
+                    <Infos key={dia.id} data-test="movie-day">
                         <h2 key={dia.weekday.id}>{dia.weekday} - {dia.date}</h2>
                         <Buttons key={dia.weekday}>
                         {dia.showtimes.map((hora) => (
-                            <Button key={dia.showtimes.id} onClick={() => {setDatasSession(hora.id, dia.weekday, hora.name );}} >
+                            <Button key={dia.showtimes.id} onClick={() => {setDatasSession(hora.id, dia.weekday, hora.name );}} data-test="showtime" >
                                 {hora.name}
                             </Button>
                         ))}
                         </Buttons>
                     </Infos>
-                        <FooterContainer>
+                        <FooterContainer data-test="footer">
                             <div>
                                 <img src={session.posterURL} alt={session.overview} />
                             </div>
