@@ -110,7 +110,7 @@ export default function Seats(props){
                 </CaptionItem>
             </CaptionContainer>
 
-            <FormContainer data-test="footer">
+            <FormContainer >
                 Nome do Comprador:
                 <input placeholder="Digite seu nome..." value={Name} onChange={(e) => setName(e.target.value)} data-test="client-name" />
 
@@ -240,6 +240,7 @@ const FooterContainer = styled.div`
         box-shadow: 0px 2px 4px 2px #0000001A;
         border-radius: 3px;
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
         background-color: white;
