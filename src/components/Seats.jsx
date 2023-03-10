@@ -20,7 +20,7 @@ export default function Seats(props){
             .catch((err) => {
                 console.error("ops! ocorreu um erro" + err);
             });
-        });
+        }, []);
 
     // const notAvailable = assentos.
         

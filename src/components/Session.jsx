@@ -18,7 +18,7 @@ export default function Session(props){
             .catch((err) => {
                 console.error("ops! ocorreu um erro" + err);
             });
-    });
+    }, []);
 
     if(session === undefined) return <h2>Loading...</h2>;
 

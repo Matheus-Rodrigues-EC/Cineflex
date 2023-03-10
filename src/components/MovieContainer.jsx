@@ -18,7 +18,7 @@ export default function Movies(props){
             .catch((err) => {
             console.error("ops! ocorreu um erro" + err);
         });
-    });
+    }, []);
 
     function getMovie(id){
         setId(id);
