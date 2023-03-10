@@ -20,7 +20,7 @@ export default function Session(props){
             });
     });
 
-    if(session === undefined) return <h2>Loading...</h2>;
+    // if(session === undefined) return <h2>Loading...</h2>;
 
     const Days = session.days;
 
