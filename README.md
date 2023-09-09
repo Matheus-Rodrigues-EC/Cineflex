@@ -23,7 +23,7 @@ O cineflex foi criado com o intuíto de ser proptótipo de projetos de reservas 
 ## Tecnologias utilizadas
 
 <div style="display: flex; gap: 5px; align-items: center; justify-content: space-evenly; width: 100vw">
-    <img heigth="40" alt="Badge-React.js" src="	https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
+    <img heigth="40" alt="Badge-React.js" src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
     <img heigth="40" alt="Badge-React-Router" src="https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white" />
     <img heigth="40" alt="Badge-Axios" src="https://img.shields.io/badge/axios-671ddf?&style=for-the-badge&logo=axios&logoColor=white" />
     <img heigth="40" alt="Badge-Styled-Components" src="https://img.shields.io/badge/styled--components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white" />
